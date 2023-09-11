@@ -1,7 +1,7 @@
 name: Pull Request - Autolabel
 on:
   pull_request:
-    types: [opened]
+    types: [synchronize, ready_for_review, opened]
     branches:
       - main
     
