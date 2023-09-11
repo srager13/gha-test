@@ -7,6 +7,7 @@ on:
 
 env:
   PR_TITLE_FORMAT: ^CNS-[0-9]+:[[:space:]].+$
+  PR_TYPE_CHECK: \[\s*[xX]\s*\] [Breaking|New Feature|Bug Fix|Optimization|Refactor|Test|Documentation Update]
 
 jobs:
   validate-pr-title:
@@ -24,14 +25,12 @@ jobs:
   validate-checklist:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    container:
+      image: bash:5.2
     steps:
-    - name: Run actions/checkout 
-      uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-    - name: Issue / Pull request body regex validator
-      uses: FabianKoestring/body-regex-validator-action@v0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_REQUEST_PATTERN: '^(.*What type of PR.*\[[xX]\].*Commit Message.*)$'
-        PULL_REQUEST_COMMENT: 'This is my pr comment template.'
+      - run: |
+          echo "${{ github.event.pull_request.body }}" | grep -q "${{ env.PR_TYPE_CHECK_REGEX }}"
+          if [[ $? -ne 0 ]]; then
+              echo "::error title=${{ github.event.pull_request.title }}::PR no type checked"
+              exit 1
+          fi
