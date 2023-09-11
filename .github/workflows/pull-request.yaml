@@ -42,7 +42,7 @@ env:
 
 jobs:
   current_ts:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     outputs:
       current_ts: ${{ steps.set_current_ts.outputs.current_ts }}
     steps:
