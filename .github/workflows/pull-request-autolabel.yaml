@@ -1,18 +1,18 @@
 name: Pull Request - Autolabel
 on:
   pull_request:
-    types: [synchronize, ready_for_review, opened]
+    types: [synchronize, ready_for_review, opened, edited]
     branches:
       - main
     
 jobs:
 
   labeler:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check Labels
-      id: labeler
-      uses: jimschubert/labeler-action@v2
+    - uses: github/issue-labeler@v3.1
       with:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        configuration-path: .github/labeler.yaml
+        sync-labels: 1
+        repo-token: ${{ github.token }}
