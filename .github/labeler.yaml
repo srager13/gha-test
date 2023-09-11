@@ -1,0 +1,18 @@
+# This file defines the schema for an automated PR labeler
+# Code for auto-labeler is here: https://github.com/marketplace/actions/regex-issue-labeler
+
+# List of automatic labels:
+#   The key is the name of the label in your repository that you want to add 
+#   (eg: "merge conflict", "needs-updating") and the value is the regular expression 
+#   for when to apply the label. Should the regular expression not match, the label 
+#   will be removed.
+#
+# For KPP, we match on the checklist for the type of PR:
+Breaking:
+  - '\- \[\s*[xX]\s*\] Breaking'
+bugfix:
+  - '\- \[\s*[xX]\s*\] Bug Fix'
+new feature:
+  - '\- \[\s*[xX]\s*\] New Feature'
+documentation:
+  - '\- \[\s*[xX]\s*\] Documentation Update'
