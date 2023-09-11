@@ -12,7 +12,7 @@ Breaking:
   - '\- \[\s*[xX]\s*\] Breaking'
 bugfix:
   - '\- \[\s*[xX]\s*\] Bug Fix'
-new feature:
+"new feature":
   - '\- \[\s*[xX]\s*\] New Feature'
 documentation:
   - '\- \[\s*[xX]\s*\] Documentation Update'
