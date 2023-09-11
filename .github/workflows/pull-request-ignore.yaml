@@ -1,0 +1,33 @@
+name: Pull Request - No Test
+on:
+  pull_request:
+    types: [synchronize, ready_for_review, opened]
+    branches:
+      - main
+    # *NOTE* MUST MATCH ./pull-request.yaml .on.pull_request.paths-ignore
+    paths:
+    - 'benchmarks/**'
+    - 'docs/**'
+    - 'README.md'
+    - '.github/release.yaml'
+    - '.github/workflows/ondemand-cleanup.yaml'
+    - '.github/workflows/build.yaml'
+    - '.github/workflows/kpp-e2e-pytest.yaml'
+    - '.github/workflows/kpp-ephemeral-nightly-mgmt-cluster-test.yaml'
+    - '.github/workflows/pull-request-ignore.yaml'
+    - '.github/workflows/release-**'
+    - '.github/workflows/sonobuoy**'
+    - '.github/workflows/kpp-testing**'
+    - 'scripts/requirements.txt'
+    - 'scripts/wipe_account.py'
+    - 'scripts/loop-add.sh'
+    - 'scripts/app-cluster-tool.py'
+    - 'scripts/.s3cfg'
+    - 'bootstrap/Pulumi.*.yaml'
+    - 'testing/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-lastest
+    steps:
+      - run: "echo \"Paths changed don't require tests\""
