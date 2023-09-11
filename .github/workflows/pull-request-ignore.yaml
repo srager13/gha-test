@@ -28,6 +28,6 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - run: "echo \"Paths changed don't require tests\""

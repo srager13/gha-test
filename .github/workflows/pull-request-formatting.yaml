@@ -11,7 +11,7 @@ env:
 jobs:
   validate-pr-title:
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     container:
       image: bash:5.2
     steps:
@@ -23,7 +23,7 @@ jobs:
 
   validate-checklist:
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
     - name: Run actions/checkout 
       uses: actions/checkout@v1
