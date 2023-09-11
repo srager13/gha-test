@@ -14,5 +14,6 @@ jobs:
     - uses: github/issue-labeler@v3.1
       with:
         configuration-path: .github/labeler.yaml
+        enable-versioned-regex: 0
         sync-labels: 1
         repo-token: ${{ github.token }}
