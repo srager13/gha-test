@@ -10,6 +10,8 @@ jobs:
   labeler:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
     - uses: github/issue-labeler@v3.2
       with:
