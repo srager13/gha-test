@@ -4,7 +4,7 @@ on:
     types: [synchronize, ready_for_review, opened, edited]
     branches:
       - main
-    
+
 jobs:
 
   labeler:
@@ -15,4 +15,5 @@ jobs:
       with:
         configuration-path: .github/labeler.yaml
         enable-versioned-regex: 0
+        sync-labels: 1
         repo-token: ${{ secrets.GITHUB_TOKEN }}
