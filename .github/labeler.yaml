@@ -8,11 +8,17 @@
 #   will be removed.
 #
 # For KPP, we match on the checklist for the type of PR:
-breaking:
-  - '\- \[\s*[xX]\s*\] Breaking'
 new feature:
   - '\- \[\s*[xX]\s*\] New Feature'
 bugfix:
   - '\- \[\s*[xX]\s*\] Bug Fix'
+optimization:
+  - '\- \[\s*[xX]\s*\] Optimization'
+refactor:
+  - '\- \[\s*[xX]\s*\] Refactor'
+test addition/update:
+  - '\- \[\s*[xX]\s*\] Test Addition/Update'
 documentation:
   - '\- \[\s*[xX]\s*\] Documentation Update'
+breaking:
+  - '\- \[\s*[xX]\s*\] Breaking Change'
