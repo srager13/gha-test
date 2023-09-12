@@ -1,12 +1,13 @@
 ## What type of PR is this? (check all applicable)
 
-- [ ] Breaking
 - [ ] New Feature
 - [ ] Bug Fix
 - [ ] Optimization
 - [ ] Refactor
-- [ ] Test
+- [ ] Test Addition/Update
 - [ ] Documentation Update
+- [ ] Breaking Change
+- [ ] Skip Release Notes
 
 ## Commit Message
 <!-- Include a proposed commit message because all PRs are squash merged. Try to explain what changes you made, why you made them,
