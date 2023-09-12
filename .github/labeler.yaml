@@ -10,7 +10,7 @@
 # For KPP, we match on the checklist for the type of PR:
 breaking:
   - '\- \[\s*[xX]\s*\] Breaking'
-newfeature:
+new feature:
   - '\- \[\s*[xX]\s*\] New Feature'
 bugfix:
   - '\- \[\s*[xX]\s*\] Bug Fix'
