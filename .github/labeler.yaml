@@ -17,7 +17,7 @@ optimization:
 refactor:
   - '\- \[\s*[xX]\s*\] Refactor'
 test addition/update:
-  - '\- \[\s*[xX]\s*\] Test Addition/Update'
+  - '\- \[\s*[xX]\s*\] Test Addition\/Update'
 documentation:
   - '\- \[\s*[xX]\s*\] Documentation Update'
 breaking:
