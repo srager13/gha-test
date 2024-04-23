@@ -31,6 +31,8 @@ jobs:
         run: echo "Running a test"
          
   update-tst-cluster:
+    # Should run on scheduled (nightly) tests that pass and manual dispatch (only if input is set to true)
+    if: ${{ needs.run-e2e-tests.result == 'success' && !contains(inputs.update_tst_cluster, 'false') }}
     needs: run-e2e-tests
     runs-on: ubuntu-latest
     steps:
@@ -46,9 +48,7 @@ jobs:
       - name: Output update_tst_cluster input
         run: echo "inputs.update_tst_cluster = ${{ inputs.update_tst_cluster }}"
 
-      # Should run on scheduled (nightly) tests that pass and manual dispatch (only if input is set to true)
       - name: Update 'tst-cluster-env' to latest commit on main branch
-        if: ${{ needs.run-e2e-tests.result == 'success' && !contains(inputs.update_tst_cluster, 'false') }}
         working-directory: ./root
         run: |
           git checkout tst-cluster-env
