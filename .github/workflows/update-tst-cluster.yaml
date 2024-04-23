@@ -55,12 +55,12 @@ jobs:
           git pull origin main
           git push origin tst-cluster-env
 
-      - name: Deploy 'tst-cluster-env'    
-        uses: srager13/gha-test/.github/workflows/deploy-cluster.yaml@main
-        with:
-          branch: tst-cluster-env
-          command: up
-          environment: ord-1-testing
+      
+      uses: srager13/gha-test/.github/workflows/deploy-cluster.yaml@main
+      with:
+        branch: tst-cluster-env
+        command: up
+        environment: ord-1-testing
 
          
   # deploy-tst-cluster:
