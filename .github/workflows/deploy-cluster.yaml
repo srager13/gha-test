@@ -1,0 +1,45 @@
+name: Deploy Cluster
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: Pulumi Action
+        required: true
+        type: choice
+        options:
+          - up
+          - destroy
+          - preview
+          - refresh
+      environment:
+        description: Environment
+        required: true
+        type: environment
+      debug:
+        description: Debug Mode
+        required: true
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      branch:
+        description: Branch
+        required: false
+        type: string
+      command:
+        description: Pulumi Action
+        required: true
+        type: string
+      environment:
+        description: Environment
+        required: true
+        type: string
+
+jobs:
+  deploy-cluster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      # pretend to run a test
+      - name: Deploy a cluster
+        run: echo "Deploying a cluster! Running pulumi ${{ github.event.inputs.command }} on branch ${{ github.event.inputs.branch }} for environment ${{ github.event.inputs.environment }} in debug mode ${{ github.event.inputs.debug }}"
