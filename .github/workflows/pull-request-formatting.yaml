@@ -7,7 +7,7 @@ on:
 
 env:
   PR_TITLE_FORMAT: ^CNS-[0-9]+:[[:space:]].+$
-  PR_TYPE_CHECK: \[\s*[xX]\s*\] [Breaking|New Feature|Bug Fix|Optimization|Refactor|Test|Documentation Update]
+  PR_TYPE_CHECK: \[\s*[xX]\s*\] [New Feature|Bug Fix|Optimization|Refactor|Test Addition\/Update|Documentation Update]
 
 jobs:
   validate-pr-title:
