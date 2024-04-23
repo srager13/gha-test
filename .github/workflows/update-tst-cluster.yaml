@@ -1,26 +1,19 @@
 name: Test updating a branch
-run-name: Update tst-branch 
 on:
+  schedule:
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       update_tst_cluster:
         type: boolean
         description: 'Update tst cluster (tst-cluster-env branch) to latest commit on main branch'
-        default: true
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  current_ts:
-    runs-on: ubuntu-latest
-    outputs:
-      current_ts: ${{ steps.set_current_ts.outputs.current_ts }}
-    steps:
-      - id: set_current_ts
-        run: echo "::set-output name=current_ts::gha$(date +%s)"
-
   run-e2e-tests:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
@@ -48,11 +41,16 @@ jobs:
           path: root
 
       - name: Output result of run-e2e-tests
-        run: echo "Result = ${{ needs.run-e2e-tests.result }}"
+        run: echo "needs.run-e2e-tests.result = ${{ needs.run-e2e-tests.result }}"
 
+      - name: Output update_tst_cluster input
+        run: echo "inputs.update_tst_cluster = ${{ inputs.update_tst_cluster }}"
+
+      # Should run on scheduled (nightly) tests that pass and manual dispatch (only if input is set to true)
       - name: Update 'tst-cluster-env' to latest commit on main branch
-        if: ${{ needs.run-e2e-tests.result == 'success' && inputs.update_tst_cluster == 'true' }}
+        if: ${{ needs.run-e2e-tests.result == 'success' && !contains(inputs.update_tst_cluster, 'false') }}
         working-directory: ./root
         run: |
           git checkout tst-cluster-env
           git pull origin main
+          git push origin tst-cluster-env
