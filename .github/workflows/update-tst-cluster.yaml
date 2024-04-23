@@ -61,7 +61,7 @@ jobs:
     needs: [run-e2e-tests, update-tst-cluster]
     runs-on: ubuntu-latest
     uses: srager13/gha-test/.github/workflows/deploy-cluster.yaml@main
-      with:
-        branch: tst-cluster-env
-        command: up
-        environment: ord-1-testing
+    with:
+      branch: tst-cluster-env
+      command: up
+      environment: ord-1-testing
