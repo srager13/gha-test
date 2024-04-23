@@ -57,6 +57,7 @@ jobs:
          
   deploy-tst-cluster:
     needs: update-tst-cluster
+    if: ${{ needs.update-tst-cluster.result == 'success' }}
     uses: ./.github/workflows/deploy-cluster.yaml
     with:
       branch: tst-cluster-env
