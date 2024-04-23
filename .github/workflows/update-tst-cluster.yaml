@@ -12,14 +12,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  current_ts:
-    runs-on: ubuntu-latest
-    outputs:
-      current_ts: ${{ steps.set_current_ts.outputs.current_ts }}
-    steps:
-      - id: set_current_ts
-        run: echo "::set-output name=current_ts::gha$(date +%s)"
-
   run-e2e-tests:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
