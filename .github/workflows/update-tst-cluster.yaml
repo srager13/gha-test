@@ -55,3 +55,4 @@ jobs:
         run: |
           git checkout tst-cluster-env
           git pull origin main
+          git push 
