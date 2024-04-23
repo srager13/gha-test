@@ -42,7 +42,7 @@ jobs:
         run: echo "Result = ${{ needs.run-e2e-tests.result }}"
 
       - name: Update 'tst-cluster-env' to latest commit on main branch
-        if: ${{ needs.run-e2e-tests.result == 'success' }} && ${{ inputs.update_tst_cluster == 'true' }}
+        if: ${{ needs.run-e2e-tests.result == 'success' }} && ${{ inputs.update_tst_cluster }}
         working-directory: ./root
         run: |
           git checkout tst-cluster-env
