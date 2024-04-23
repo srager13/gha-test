@@ -42,4 +42,4 @@ jobs:
     steps:
       # pretend to run a test
       - name: Deploy a cluster
-        run: echo "Deploying a cluster! Running pulumi ${{ github.event.inputs.command }} on branch ${{ github.event.inputs.branch }} for environment ${{ github.event.inputs.environment }} in debug mode ${{ github.event.inputs.debug }}"
+        run: echo "Deploying a cluster! Running pulumi ${{ inputs.command }} on branch ${{ inputs.branch }} for environment ${{ inputs.environment }} in debug mode ${{ github.event.inputs.debug }}"
