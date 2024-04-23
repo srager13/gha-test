@@ -54,3 +54,10 @@ jobs:
           git checkout tst-cluster-env
           git pull origin main
           git push origin tst-cluster-env
+
+      - name: Deploy Cluster
+        uses: ./.github/actions/deploy-cluster.yaml
+        with:
+          branch: tst-cluster-env
+          command: up
+          environment: ord-1-testing
