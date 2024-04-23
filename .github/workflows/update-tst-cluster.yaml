@@ -56,7 +56,7 @@ jobs:
           git push origin tst-cluster-env
 
       - name: Deploy Cluster
-        uses: ./.github/actions/deploy-cluster.yaml
+        uses: ./.github/workflows/deploy-cluster.yaml
         with:
           branch: tst-cluster-env
           command: up
