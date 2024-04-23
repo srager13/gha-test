@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.2
-      - uses: srager13/gha-test/.github/workflows/deploy-cluster.yaml
+      - uses: srager13/gha-test/.github/workflows/deploy-cluster.yaml@main
         with:
           branch: tst-cluster-env
           command: up
