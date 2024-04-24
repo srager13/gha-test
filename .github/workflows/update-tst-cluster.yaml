@@ -1,7 +1,7 @@
 name: Test updating a branch
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  # schedule:
+  #   - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       update_tst_cluster:
